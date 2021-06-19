@@ -39,9 +39,13 @@ class _MyAppState extends State<MyApp> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       new Text("Screen is kept on ? "),
-                      new Checkbox(value: _isKeptOn, onChanged: (bool b){
-                        Screen.keepOn(b);
-                        setState((){_isKeptOn = b; });
+                      new Checkbox(value: _isKeptOn, onChanged: (bool? b){
+                        if(b != null) {
+                          Screen.keepOn(b);
+                          setState(() {
+                            _isKeptOn = b;
+                          });
+                        }
                       })
                     ]
                   ),
